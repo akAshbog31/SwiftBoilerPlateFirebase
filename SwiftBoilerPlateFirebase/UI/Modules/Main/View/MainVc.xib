@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainVc" customModule="SwiftBoilerPlate" customModuleProvider="target">
+            <connections>
+                <outlet property="clvMain" destination="2na-19-PfV" id="PA6-1M-tMa"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OLp-mI-IsV">
+                    <rect key="frame" x="0.0" y="59" width="393" height="63"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wel Come" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vhh-Vu-GSW">
+                            <rect key="frame" x="20" y="14" width="353" height="35"/>
+                            <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="30"/>
+                            <color key="textColor" name="AccentColor"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="dynamicFontSize">
+                                    <real key="value" value="30"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="Vhh-Vu-GSW" firstAttribute="centerY" secondItem="OLp-mI-IsV" secondAttribute="centerY" id="8I6-vM-Wbb"/>
+                        <constraint firstItem="Vhh-Vu-GSW" firstAttribute="leading" secondItem="OLp-mI-IsV" secondAttribute="leading" constant="20" id="TVv-CU-0Sn"/>
+                        <constraint firstAttribute="trailing" secondItem="Vhh-Vu-GSW" secondAttribute="trailing" constant="20" id="Y6S-Eq-MYX"/>
+                    </constraints>
+                </view>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="2na-19-PfV">
+                    <rect key="frame" x="0.0" y="122" width="393" height="730"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="PDE-HW-3Jl">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <cells/>
+                </collectionView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="2na-19-PfV" secondAttribute="trailing" id="1Pd-Wv-ffW"/>
+                <constraint firstItem="2na-19-PfV" firstAttribute="top" secondItem="OLp-mI-IsV" secondAttribute="bottom" id="3t8-9f-RRQ"/>
+                <constraint firstItem="2na-19-PfV" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Via-Fs-NA7"/>
+                <constraint firstItem="OLp-mI-IsV" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="60:812" id="aDL-M7-XQl"/>
+                <constraint firstItem="OLp-mI-IsV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="b59-Fb-GCa"/>
+                <constraint firstItem="OLp-mI-IsV" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="nmG-XD-Pkg"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="OLp-mI-IsV" secondAttribute="trailing" id="vuW-Kw-Um0"/>
+                <constraint firstAttribute="bottom" secondItem="2na-19-PfV" secondAttribute="bottom" id="wGb-7q-Vkl"/>
+            </constraints>
+            <point key="canvasLocation" x="110.68702290076335" y="20.422535211267608"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
