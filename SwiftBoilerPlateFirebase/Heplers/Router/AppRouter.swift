@@ -43,10 +43,8 @@ class AppRouter: Router {
         let viewController = route.viewController
         if let transitionType = transitionType, let interval = interval {
             createTransition(with: transitionType, for: interval)
-            navigationController.pushViewController(viewController, animated: false)
-        } else {
-            navigationController.pushViewController(viewController, animated: true)
         }
+        navigationController.pushViewController(viewController, animated: true)
         currentRouteIndex = routeStack.count - 1
     }
 
@@ -54,10 +52,8 @@ class AppRouter: Router {
         if routeStack.count > 1 {
             if let transitionType = transitionType, let interval = interval {
                 createTransition(with: transitionType, for: interval)
-                navigationController.popViewController(animated: false)
-            } else {
-                navigationController.popViewController(animated: true)
             }
+            navigationController.popViewController(animated: true)
             routeStack.removeLast()
             currentRouteIndex -= 1
         }
@@ -67,15 +63,15 @@ class AppRouter: Router {
         guard let targetIndex = routeStack.firstIndex(of: route) else {
             return
         }
-        while currentRouteIndex > targetIndex {
+        if let targetViewController = navigationController.viewControllers.first(where: { $0.isKind(of: route.viewController.classForCoder) }) {
+            while currentRouteIndex > targetIndex {
+                routeStack.removeLast()
+                currentRouteIndex -= 1
+            }
             if let transitionType = transitionType, let interval = interval {
                 createTransition(with: transitionType, for: interval)
-                navigationController.popViewController(animated: false)
-            } else {
-                navigationController.popViewController(animated: true)
             }
-            routeStack.removeLast()
-            currentRouteIndex -= 1
+            navigationController.popToViewController(targetViewController, animated: true)
         }
     }
 
