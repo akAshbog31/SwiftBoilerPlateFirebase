@@ -30,22 +30,28 @@ enum DataBaseService {
         return response
     }
 
-    static func post<T: FirebaseIdentifiable>(_ value: T, to collection: ColloectionType, for database: Firestore) async throws -> T {
-        let referance = database.collection(collection.rawValue.capitalized).document()
+    static func post<T: FirebaseIdentifiable>(_ value: T, for collectionID: String?, to collection: ColloectionType) async throws -> T {
+        var referance: DocumentReference
         var valueToWrite: T = value
-        valueToWrite.id = referance.documentID
+        if let collectionID = collectionID {
+            referance = Firestore.firestore().collection(collection.rawValue.capitalized).document(collectionID)
+            valueToWrite.id = collectionID
+        } else {
+            referance = Firestore.firestore().collection(collection.rawValue.capitalized).document()
+            valueToWrite.id = referance.documentID
+        }
         try referance.setData(from: valueToWrite)
         return valueToWrite
     }
 
-    static func put<T: FirebaseIdentifiable>(_ value: T, to collection: ColloectionType, for database: Firestore) async throws -> T {
-        let referance = database.collection(collection.rawValue.capitalized).document(value.id)
+    static func put<T: FirebaseIdentifiable>(_ value: T, to collection: ColloectionType) async throws -> T {
+        let referance = Firestore.firestore().collection(collection.rawValue.capitalized).document(value.id)
         try referance.setData(from: value)
         return value
     }
 
-    static func delete<T: FirebaseIdentifiable>(_ value: T, in collection: ColloectionType, for database: Firestore) async throws {
-        let referance = database.collection(collection.rawValue.capitalized).document(value.id)
+    static func delete<T: FirebaseIdentifiable>(_ value: T, in collection: ColloectionType) async throws {
+        let referance = Firestore.firestore().collection(collection.rawValue.capitalized).document(value.id)
         try await referance.delete()
     }
 }

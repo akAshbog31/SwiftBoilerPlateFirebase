@@ -9,9 +9,9 @@ import UIKit
 
 class ViewController<T: ViewModel>: UIViewController {
     // MARK: - @IBOutlet
-    var viewModel: T
 
     // MARK: - Properties
+    var viewModel: T
 
     // MARK: - LifeCycle
     init(viewModel: T) {

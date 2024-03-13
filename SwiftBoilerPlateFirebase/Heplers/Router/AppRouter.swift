@@ -30,11 +30,11 @@ class AppRouter: Router {
             UIView.transition(with: navigationController.view, duration: duration, options: options, animations: {
                 let oldState = UIView.areAnimationsEnabled
                 UIView.setAnimationsEnabled(false)
-                self.navigationController.setViewControllers([viewController], animated: true)
+                self.navigationController.setViewControllers([viewController], animated: false)
                 UIView.setAnimationsEnabled(oldState)
             })
         } else {
-            navigationController.setViewControllers([viewController], animated: true)
+            navigationController.setViewControllers([viewController], animated: false)
         }
     }
 
@@ -43,8 +43,10 @@ class AppRouter: Router {
         let viewController = route.viewController
         if let transitionType = transitionType, let interval = interval {
             createTransition(with: transitionType, for: interval)
+            navigationController.pushViewController(viewController, animated: false)
+        } else {
+            navigationController.pushViewController(viewController, animated: true)
         }
-        navigationController.pushViewController(viewController, animated: true)
         currentRouteIndex = routeStack.count - 1
     }
 
@@ -52,8 +54,10 @@ class AppRouter: Router {
         if routeStack.count > 1 {
             if let transitionType = transitionType, let interval = interval {
                 createTransition(with: transitionType, for: interval)
+                navigationController.popViewController(animated: false)
+            } else {
+                navigationController.popViewController(animated: true)
             }
-            navigationController.popViewController(animated: true)
             routeStack.removeLast()
             currentRouteIndex -= 1
         }
@@ -66,8 +70,10 @@ class AppRouter: Router {
         while currentRouteIndex > targetIndex {
             if let transitionType = transitionType, let interval = interval {
                 createTransition(with: transitionType, for: interval)
+                navigationController.popViewController(animated: false)
+            } else {
+                navigationController.popViewController(animated: true)
             }
-            navigationController.popViewController(animated: false)
             routeStack.removeLast()
             currentRouteIndex -= 1
         }

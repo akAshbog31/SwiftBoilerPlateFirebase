@@ -16,16 +16,16 @@ protocol FirebaseIdentifiable: Hashable, Codable {
 
 extension FirebaseIdentifiable {
     @discardableResult
-    func post(to collection: ColloectionType, for database: Firestore) async throws -> Self {
-        try await DataBaseService.post(self, to: collection, for: database)
+    func post(to collection: ColloectionType, for collectionID: String?) async throws -> Self {
+        try await DataBaseService.post(self, for: collectionID, to: collection)
     }
 
     @discardableResult
-    func put(to collection: ColloectionType, for database: Firestore) async throws -> Self {
-        try await DataBaseService.put(self, to: collection, for: database)
+    func put(to collection: ColloectionType) async throws -> Self {
+        try await DataBaseService.put(self, to: collection)
     }
 
-    func delete(to collection: ColloectionType, for database: Firestore) async throws {
-        try await DataBaseService.delete(self, in: collection, for: database)
+    func delete(to collection: ColloectionType) async throws {
+        try await DataBaseService.delete(self, in: collection)
     }
 }

@@ -37,7 +37,7 @@ final class MainVm: ViewModel {
                         print(name)
                     }
                 }
-                strongSelf.router.push(to: route, with: .fade, for: 0.1)
+                strongSelf.router.push(to: route, with: .fade, for: 0.3)
             }
         }.store(in: &bag)
         return output.eraseToAnyPublisher()

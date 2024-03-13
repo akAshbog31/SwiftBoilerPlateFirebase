@@ -28,7 +28,7 @@ final class FireBaseManager: FireBaseServices {
     }
 
     func create(user: UserModel) async throws -> UserModel {
-        try await user.post(to: .user, for: database)
+        try await user.post(to: .user, for: user.id)
     }
 
     func getUser(by id: String) async throws -> UserModel {
